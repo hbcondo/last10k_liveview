@@ -35,3 +35,6 @@ last10k-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# etc
+*.toml
+

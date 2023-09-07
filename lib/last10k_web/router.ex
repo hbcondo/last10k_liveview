@@ -1,5 +1,6 @@
 defmodule Last10kWeb.Router do
-  use Last10kWeb, :router
+  use Phoenix.Router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,6 +19,7 @@ defmodule Last10kWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/filings", FilingsLive
   end
 
   # Other scopes may use custom stacks.

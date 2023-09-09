@@ -36,5 +36,6 @@ npm-debug.log
 /assets/node_modules/
 
 # etc
+secrets.exs
 *.toml
 

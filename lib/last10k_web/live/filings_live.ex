@@ -28,12 +28,20 @@ defmodule Last10kWeb.FilingsLive do
   def render(assigns) do
     ~H"""
       <table>
+        <thead>
+          <th>Company</th>
+          <th>Accepted</th>
+        </thead>
         <tbody id="filings" phx-update="stream">
           <tr
             :for={{id, filing} <- @streams.filings}
             id={id}
           >
             <td><%= filing.company %></td>
+            <td>
+              <%= display_date(filing.acceptanceDate) %><br />
+              <small><%= display_time(filing.acceptanceDate) %> EST</small>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -102,10 +110,18 @@ defmodule Last10kWeb.FilingsLive do
       accessionNumber: accessionNumber,
       company: title,
       formType: category,
-      acceptanceDate: updated,
+      acceptanceDate: updated |> elem(1),
       url: uri
     }
 
+  end
+
+  defp display_date(value) do
+    Enum.join [value.year, value.month, value.day], "-"
+  end
+
+  defp display_time(value) do
+    Enum.join [value.hour, value.minute, value.second], ":"
   end
 
 end

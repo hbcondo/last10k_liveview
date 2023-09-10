@@ -1,0 +1,18 @@
+      <table>
+        <thead>
+          <th>Company</th>
+          <th>Accepted</th>
+        </thead>
+        <tbody id="filings" phx-update="stream">
+          <tr
+            :for={{id, filing} <- @streams.filings}
+            id={id}
+          >
+            <td><%= filing.company %></td>
+            <td>
+              <%= display_date(filing.acceptanceDate) %><br />
+              <small><%= display_time(filing.acceptanceDate) %> EST</small>
+            </td>
+          </tr>
+        </tbody>
+      </table>

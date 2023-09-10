@@ -4,29 +4,6 @@ defmodule Last10kWeb.FilingsLive do
   alias Last10k.Filing
   alias Last10k.LatestFilings
 
-  def render(assigns) do
-    ~H"""
-      <table>
-        <thead>
-          <th>Company</th>
-          <th>Accepted</th>
-        </thead>
-        <tbody id="filings" phx-update="stream">
-          <tr
-            :for={{id, filing} <- @streams.filings}
-            id={id}
-          >
-            <td><%= filing.company %></td>
-            <td>
-              <%= display_date(filing.acceptanceDate) %><br />
-              <small><%= display_time(filing.acceptanceDate) %> EST</small>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    """
-  end
-
   def mount(_params, _session, socket) do
     if connected?(socket), do: Process.send_after(self(), :update, 1000)
 

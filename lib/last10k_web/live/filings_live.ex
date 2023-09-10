@@ -1,29 +1,8 @@
-defmodule Song do
-  defstruct [:id, :title]
-end
-
-defmodule LatestFilings do
-  defstruct [
-    count: 0,
-    #lastUpdated: DateTime.now("US/Eastern"),
-    filings: []
-  ]
-end
-
-defmodule Filing do
-  defstruct [
-    :id,
-    :cik,
-    :accessionNumber,
-    :company,
-    :formType,
-    :acceptanceDate,
-    :url
-  ]
-end
-
 defmodule Last10kWeb.FilingsLive do
   use Phoenix.LiveView
+
+  alias Last10k.Filing
+  alias Last10k.LatestFilings
 
   def render(assigns) do
     ~H"""

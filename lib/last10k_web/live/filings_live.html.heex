@@ -3,27 +3,23 @@
   This listing contains the most recent filings for the current official filing date (including filings made after the 5:30pm EST deadline on the previous filing day). 
   Filings may be made Monday through Friday (except for <a target="_blank" href="https://www.sec.gov/info/edgar/fedholiday.htm">U.S. Federal Holidays</a>).
 </h2>
+
 <center>
-  <table class="w-5/6 m-3 table-auto border-collapse border border-slate-400">
-    <caption>
-      SEC Filings
-    </caption>
-    <thead class="text-left">
-      <th>Form - Filer (CIK) (Reporting)</th>
-      <th>Accepted</th>
-    </thead>
-    <tbody id="filings" phx-update="stream">
-      <tr
-        :for={{id, filing} <- @streams.filings}
-        id={id}
-        class="border border-slate-300"
-      >
-        <td><%= filing.company %></td>
-        <td>
-          <%= display_date(filing.acceptanceDate) %><br />
-          <small><%= display_time(filing.acceptanceDate) %> EST</small>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ul role="list" class="w-8/9 m-3 divide-y divide-gray-100">
+    <li 
+      :for={{id, filing} <- @streams.filings}
+      id={id}
+      class="flex justify-between gap-x-6 py-5">
+      <div class="flex min-w-0 gap-x-4 text-start">
+        <div class="min-w-0 flex-auto">
+          <p class="text-sm font-semibold leading-6 text-gray-900"><%= filing.company %></p>
+          <p class="mt-1 truncate text-xs leading-5 text-gray-500"><%= filing.accessionNumber %></p>
+        </div>
+      </div>
+      <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end text-end">
+        <p class="text-sm leading-6 text-gray-900"><%= display_date(filing.acceptanceDate) %></p>
+        <p class="mt-1 text-xs leading-5 text-gray-500"><%= display_time(filing.acceptanceDate) %> EST</p>
+      </div>
+    </li>
+  </ul>
 </center>

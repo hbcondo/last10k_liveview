@@ -1,18 +1,29 @@
-      <table>
-        <thead>
-          <th>Company</th>
-          <th>Accepted</th>
-        </thead>
-        <tbody id="filings" phx-update="stream">
-          <tr
-            :for={{id, filing} <- @streams.filings}
-            id={id}
-          >
-            <td><%= filing.company %></td>
-            <td>
-              <%= display_date(filing.acceptanceDate) %><br />
-              <small><%= display_time(filing.acceptanceDate) %> EST</small>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<h1 class="p-2"><strong>Latest Filings Received and Processed at the SEC</strong></h1>
+<h2 class="p-2">
+  This listing contains the most recent filings for the current official filing date (including filings made after the 5:30pm EST deadline on the previous filing day). 
+  Filings may be made Monday through Friday (except for <a target="_blank" href="https://www.sec.gov/info/edgar/fedholiday.htm">U.S. Federal Holidays</a>).
+</h2>
+<center>
+  <table class="w-5/6 m-3 table-auto border-collapse border border-slate-400">
+    <caption>
+      SEC Filings
+    </caption>
+    <thead class="text-left">
+      <th>Form - Filer (CIK) (Reporting)</th>
+      <th>Accepted</th>
+    </thead>
+    <tbody id="filings" phx-update="stream">
+      <tr
+        :for={{id, filing} <- @streams.filings}
+        id={id}
+        class="border border-slate-300"
+      >
+        <td><%= filing.company %></td>
+        <td>
+          <%= display_date(filing.acceptanceDate) %><br />
+          <small><%= display_time(filing.acceptanceDate) %> EST</small>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</center>

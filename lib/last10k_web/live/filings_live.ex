@@ -59,6 +59,7 @@ defmodule Last10kWeb.FilingsLive do
     cik = Enum.at(uri_path_parts, 4)
     index_file = Enum.at(uri_path_parts, 6)
     accessionNumber = String.replace(index_file, "-index.htm", "")
+    summary = entry["summary"]["value"]
 
     %Filing{
       id: title,
@@ -67,9 +68,15 @@ defmodule Last10kWeb.FilingsLive do
       company: title,
       formType: category,
       acceptanceDate: updated |> elem(1),
-      url: uri
+      url: uri,
+      filingDate: get_filed(summary)
     }
+  end
 
+  defp get_filed(summary) do
+    filed_string = String.slice(summary, 16, 10)
+    filed_result = Date.from_iso8601(filed_string)
+    filed_result |> elem(1)
   end
 
   defp display_date(value) do

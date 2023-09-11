@@ -19,7 +19,9 @@ defmodule Last10k.Filing do
     :accessionNumber,
     :company,
     :formType,
+    :filingDate,
     :acceptanceDate,
-    :url
+    :url,
+    items: []
   ]
 end

@@ -69,7 +69,8 @@ defmodule Last10kWeb.FilingsLive do
       formType: category,
       acceptanceDate: updated |> elem(1),
       url: uri,
-      filingDate: get_filed(summary)
+      filingDate: get_filed(summary),
+      items: get_items(summary, category)
     }
   end
 
@@ -77,6 +78,15 @@ defmodule Last10kWeb.FilingsLive do
     filed_string = String.slice(summary, 16, 10)
     filed_result = Date.from_iso8601(filed_string)
     filed_result |> elem(1)
+  end
+
+  defp get_items(summary, formType) do
+      if formType == "8-K" or formType == "8-K/A" do
+        items = String.split(summary, "<br>")
+        Enum.drop(items, 1)
+      else
+        []
+      end
   end
 
   defp display_date(value) do

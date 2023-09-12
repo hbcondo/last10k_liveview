@@ -65,13 +65,24 @@ defmodule Last10kWeb.FilingsLive do
       id: title,
       cik: cik,
       accessionNumber: accessionNumber,
-      company: title,
+      company: get_filer(title),
+      reportingType: get_reporting_type(title),
       formType: category,
       acceptanceDate: updated |> elem(1),
-      url: uri,
+      url_html: uri,
+      url_text: String.replace(link, "-index.htm", ".txt"),
       filingDate: get_filed(summary),
       items: get_items(summary, category)
     }
+  end
+
+  defp get_filer(title) do
+    Regex.run(~r/(?<=\-\s)(.*?)(?=\s\()/, title)
+  end
+
+  defp get_reporting_type(title) do
+    matches = Regex.scan(~r/(?<=\()(.*?)(?=\))/, title, capture: :all_but_first)
+    List.last(matches, "")
   end
 
   defp get_filed(summary) do

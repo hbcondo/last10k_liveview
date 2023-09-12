@@ -18,10 +18,12 @@ defmodule Last10k.Filing do
     :cik,
     :accessionNumber,
     :company,
+    :reportingType,
     :formType,
     :filingDate,
     :acceptanceDate,
-    :url,
+    :url_html,
+    :url_text,
     items: []
   ]
 end

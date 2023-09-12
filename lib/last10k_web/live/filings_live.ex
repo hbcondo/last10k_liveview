@@ -77,7 +77,8 @@ defmodule Last10kWeb.FilingsLive do
   end
 
   defp get_filer(title) do
-    Regex.run(~r/(?<=\-\s)(.*?)(?=\s\()/, title)
+    matches = Regex.run(~r/(?<=\-\s)(.*?)(?=\s\()/, title)
+    List.first(matches)
   end
 
   defp get_reporting_type(title) do

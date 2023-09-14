@@ -36,14 +36,19 @@ defmodule Last10kWeb.FilingsLive do
       case FastRSS.parse_atom(feed) do
         {:ok, map_of_feed} ->
           entries = Map.get(map_of_feed, "entries")
+
+          filings_map = entries |> Stream.map(&get_entry(&1))
+          filings_list = Enum.to_list(filings_map)
+          filings_list |> Enum.sort(&(NaiveDateTime.after?(&1.acceptanceDate, &2.acceptanceDate)))
+          filings_list |> Enum.sort_by(&{&1.cik}, :desc)
+
           %LatestFilings{
-            count: length(entries),
-            filings: entries |> Stream.map(&get_entry(&1))
+            count: length(filings_list),
+            filings: filings_list
           }
         {:error, "parse error"} ->
           IO.puts("parse error")
       end
-
     {:ok, parsed_feed}
   end
 
@@ -56,7 +61,7 @@ defmodule Last10kWeb.FilingsLive do
     link = List.first(links)["href"]
     uri = URI.parse(link)
     uri_path_parts = Path.split(uri.path)
-    cik = Enum.at(uri_path_parts, 4)
+    cik = Integer.parse(Enum.at(uri_path_parts, 4))
     index_file = Enum.at(uri_path_parts, 6)
     accessionNumber = String.replace(index_file, "-index.htm", "")
     summary = entry["summary"]["value"]

@@ -2,4 +2,16 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* This file is for your main application CSS */
+.new-item {
+  animation: pulse 5s;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #00AEEF;
+  }
+
+  100% {
+    background-color: #ffffff;  
+  }
+}

@@ -61,14 +61,14 @@ defmodule Last10kWeb.FilingsLive do
     link = List.first(links)["href"]
     uri = URI.parse(link)
     uri_path_parts = Path.split(uri.path)
-    cik = Integer.parse(Enum.at(uri_path_parts, 4))
+    cik = Enum.at(uri_path_parts, 4)
     index_file = Enum.at(uri_path_parts, 6)
     accessionNumber = String.replace(index_file, "-index.htm", "")
     summary = entry["summary"]["value"]
 
     %Filing{
-      id: title,
-      cik: cik,
+      id: "#{cik}.#{accessionNumber}",
+      cik: Integer.parse(cik),
       accessionNumber: accessionNumber,
       company: get_filer(title),
       reportingType: get_reporting_type(title),

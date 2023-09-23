@@ -4,7 +4,7 @@ defmodule Last10k.LatestFilings do
   """
   defstruct [
     count: 0,
-    #lastUpdated: DateTime.now("US/Eastern"),
+    lastUpdated: DateTime.now("Etc/UTC"),
     filings: []
   ]
 end

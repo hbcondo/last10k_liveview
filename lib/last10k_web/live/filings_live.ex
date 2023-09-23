@@ -44,6 +44,7 @@ defmodule Last10kWeb.FilingsLive do
 
           %LatestFilings{
             count: length(filings_list),
+            lastUpdated: List.first(filings_list).acceptanceDate,
             filings: filings_list
           }
         {:error, "parse error"} ->

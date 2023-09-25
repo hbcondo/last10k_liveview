@@ -13,10 +13,16 @@ defmodule Last10kWeb.FilingsLive do
   def handle_info(:update, socket) do
     Process.send_after(self(), :update, 1000)
 
+    filings = get_filings()
+
+    {:noreply, stream(socket, :filings, filings.filings)}
+  end
+
+  defp get_filings() do
     url = Application.get_env(:last10k, Last10kWeb.Endpoint)[:liveview_feed_url]
     headers = ["user-agent": Application.get_env(:last10k, Last10kWeb.Endpoint)[:liveview_feed_agent]]
 
-    filings =
+    _filings =
       case HTTPoison.get(url, headers) do
         {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
           #IO.puts body
@@ -27,8 +33,6 @@ defmodule Last10kWeb.FilingsLive do
         {:error, %HTTPoison.Error{reason: reason}} ->
           IO.inspect reason
       end
-
-    {:noreply, stream(socket, :filings, filings.filings)}
   end
 
   defp parse(feed) do

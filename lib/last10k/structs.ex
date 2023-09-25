@@ -4,7 +4,7 @@ defmodule Last10k.LatestFilings do
   """
   defstruct [
     count: 0,
-    lastUpdated: DateTime.now("Etc/UTC"),
+    lastUpdated: NaiveDateTime.local_now(),
     filings: []
   ]
 end

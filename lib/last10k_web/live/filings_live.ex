@@ -7,15 +7,24 @@ defmodule Last10kWeb.FilingsLive do
   def mount(_params, _session, socket) do
     if connected?(socket), do: Process.send_after(self(), :update, 1000)
 
-    {:ok, stream(socket, :filings, [])}
+    filings = get_filings()
+
+    {:ok, assign(socket, :filings, filings.filings)}
   end
 
   def handle_info(:update, socket) do
     Process.send_after(self(), :update, 1000)
+    new_filings = get_filings().filings
+    previous_filings = socket.assigns.filings
+    previous_filings_most_recent_date = List.first(previous_filings)
+    if previous_filings_most_recent_date do
+      new_filings = get_filings()
+      filtered_filings = new_filings.filings
+      Enum.filter(filtered_filings, fn f -> (f.acceptanceDate > previous_filings_most_recent_date.acceptanceDate) == true end)
+    end
 
-    filings = get_filings()
-
-    {:noreply, stream(socket, :filings, filings.filings)}
+    {:noreply, assign(socket, :filings, new_filings)}
+    #{:noreply, stream(socket, :filings, new_filings, at: -1)}
   end
 
   defp get_filings() do
@@ -41,7 +50,7 @@ defmodule Last10kWeb.FilingsLive do
         {:ok, map_of_feed} ->
           entries = Map.get(map_of_feed, "entries")
 
-          filings_map = entries |> Stream.map(&get_entry(&1))
+          filings_map = entries |> Enum.map(&get_entry(&1))
           filings_list = Enum.to_list(filings_map)
           filings_list |> Enum.sort(&(NaiveDateTime.after?(&1.acceptanceDate, &2.acceptanceDate)))
           filings_list |> Enum.sort_by(&{&1.cik}, :desc)
@@ -49,7 +58,7 @@ defmodule Last10kWeb.FilingsLive do
           %LatestFilings{
             count: length(filings_list),
             lastUpdated: List.first(filings_list).acceptanceDate,
-            filings: filings_list
+            filings: Enum.uniq(filings_list)
           }
         {:error, "parse error"} ->
           IO.puts("parse error")

@@ -16,10 +16,10 @@ defmodule Last10kWeb.FilingsLive do
     Process.send_after(self(), :update, 1000)
     new_filings = get_filings().filings
 
-    goback = NaiveDateTime.add(NaiveDateTime.add(NaiveDateTime.local_now(), 3, :hour), -10, :minute)
-    IO.puts(goback)
+    goback = NaiveDateTime.add(NaiveDateTime.add(NaiveDateTime.local_now(), 3, :hour), -60, :second)
+    #IO.puts(goback)
     new_filings = Enum.filter(new_filings, fn f -> f.acceptanceDate >= goback end)
-    IO.puts(length(new_filings))
+    #IO.puts(length(new_filings))
 
     {:noreply, stream(socket, :filings, new_filings, at: 0)}
   end

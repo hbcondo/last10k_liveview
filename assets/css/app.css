@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 .new-item {
-  animation: pulse 5s;
+  animation: pulse 1s;
 }
 
 @keyframes pulse {

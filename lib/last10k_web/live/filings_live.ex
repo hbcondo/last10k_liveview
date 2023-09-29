@@ -1,6 +1,7 @@
 defmodule Last10kWeb.FilingsLive do
   use Phoenix.LiveView
 
+  alias Phoenix.LiveView.JS
   alias Last10k.Filing
   alias Last10k.LatestFilings
 
@@ -16,7 +17,7 @@ defmodule Last10kWeb.FilingsLive do
     Process.send_after(self(), :update, 1000)
     new_filings = get_filings().filings
 
-    goback = NaiveDateTime.add(NaiveDateTime.add(NaiveDateTime.local_now(), 3, :hour), -60, :second)
+    goback = NaiveDateTime.add(NaiveDateTime.add(NaiveDateTime.local_now(), 3, :hour), -90, :second)
     #IO.puts(goback)
     new_filings = Enum.filter(new_filings, fn f -> f.acceptanceDate >= goback end)
     #IO.puts(length(new_filings))

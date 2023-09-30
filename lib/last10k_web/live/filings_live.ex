@@ -1,26 +1,24 @@
 defmodule Last10kWeb.FilingsLive do
+  @filings_timezone "America/New_York"
   use Phoenix.LiveView
 
   alias Phoenix.LiveView.JS
   alias Last10k.Filing
   alias Last10k.LatestFilings
+  alias Timex
 
   def mount(_params, _session, socket) do
     if connected?(socket), do: Process.send_after(self(), :update, 1000)
 
-    filings = get_filings()
+    mount_filings = get_filings().filings
 
-    {:ok, stream(socket, :filings, filings.filings)}
+    {:ok, stream(socket, :filings, mount_filings)}
   end
 
   def handle_info(:update, socket) do
     Process.send_after(self(), :update, 1000)
-    new_filings = get_filings().filings
 
-    goback = NaiveDateTime.add(NaiveDateTime.add(NaiveDateTime.local_now(), 3, :hour), -90, :second)
-    #IO.puts(goback)
-    new_filings = Enum.filter(new_filings, fn f -> f.acceptanceDate >= goback end)
-    #IO.puts(length(new_filings))
+    new_filings = get_filings().filings
 
     {:noreply, stream(socket, :filings, new_filings, at: 0)}
   end
@@ -50,7 +48,7 @@ defmodule Last10kWeb.FilingsLive do
 
           filings_map = entries |> Stream.map(&get_entry(&1))
           filings_list = Enum.to_list(filings_map)
-          filings_list |> Enum.sort(&(NaiveDateTime.after?(&1.acceptanceDate, &2.acceptanceDate)))
+          filings_list |> Enum.sort(&(DateTime.after?(&1.acceptanceDate, &2.acceptanceDate)))
           filings_list |> Enum.sort_by(&{&1.cik}, :desc)
 
           %LatestFilings{
@@ -66,7 +64,7 @@ defmodule Last10kWeb.FilingsLive do
 
   defp get_entry(entry) do
     title = entry["title"]["value"]
-    updated = NaiveDateTime.from_iso8601(entry["updated"])
+    updated = NaiveDateTime.from_iso8601(entry["updated"]) |> elem(1)
     categories = entry["categories"]
     category = List.first(categories)["term"]
     links = entry["links"]
@@ -85,7 +83,7 @@ defmodule Last10kWeb.FilingsLive do
       company: get_filer(title),
       reportingType: get_reporting_type(title),
       formType: category,
-      acceptanceDate: updated |> elem(1),
+      acceptanceDate: Timex.to_datetime(updated, @filings_timezone),
       url_html: uri,
       url_text: String.replace(link, "-index.htm", ".txt"),
       filingDate: get_filed(summary),

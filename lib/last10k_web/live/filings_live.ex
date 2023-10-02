@@ -1,5 +1,6 @@
 defmodule Last10kWeb.FilingsLive do
   @filings_timezone "America/New_York"
+  @filings_refresh_rate 1000
   use Phoenix.LiveView
 
   alias Phoenix.LiveView.JS
@@ -8,7 +9,7 @@ defmodule Last10kWeb.FilingsLive do
   alias Timex
 
   def mount(_params, _session, socket) do
-    if connected?(socket), do: Process.send_after(self(), :update, 1000)
+    if connected?(socket), do: Process.send_after(self(), :update, @filings_refresh_rate)
 
     mount_filings = get_filings().filings
 
@@ -16,11 +17,12 @@ defmodule Last10kWeb.FilingsLive do
   end
 
   def handle_info(:update, socket) do
-    Process.send_after(self(), :update, 1000)
+    Process.send_after(self(), :update, @filings_refresh_rate)
 
     new_filings = get_filings().filings
+    filtered_filings = filter_filings(new_filings)
 
-    {:noreply, stream(socket, :filings, new_filings, at: 0)}
+    {:noreply, stream(socket, :filings, filtered_filings)}
   end
 
   defp get_filings() do
@@ -40,6 +42,11 @@ defmodule Last10kWeb.FilingsLive do
       end
   end
 
+  defp filter_filings(filings_list) do
+    filings_list
+      |> Enum.uniq()
+  end
+
   defp parse(feed) do
     parsed_feed =
       case FastRSS.parse_atom(feed) do
@@ -48,13 +55,11 @@ defmodule Last10kWeb.FilingsLive do
 
           filings_map = entries |> Stream.map(&get_entry(&1))
           filings_list = Enum.to_list(filings_map)
-          filings_list |> Enum.sort(&(DateTime.after?(&1.acceptanceDate, &2.acceptanceDate)))
-          filings_list |> Enum.sort_by(&{&1.cik}, :desc)
 
           %LatestFilings{
             count: length(filings_list),
             lastUpdated: List.first(filings_list).acceptanceDate,
-            filings: Enum.uniq(filings_list)
+            filings: filings_list
           }
         {:error, "parse error"} ->
           IO.puts("parse error")

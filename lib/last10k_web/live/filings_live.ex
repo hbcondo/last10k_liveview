@@ -86,7 +86,7 @@ defmodule Last10kWeb.FilingsLive do
 
     %Filing{
       id: "#{cik}.#{accessionNumber}",
-      cik: Integer.parse(cik),
+      cik: Integer.parse(cik) |> elem(0),
       accessionNumber: accessionNumber,
       company: get_filer(title),
       reportingType: get_reporting_type(title),

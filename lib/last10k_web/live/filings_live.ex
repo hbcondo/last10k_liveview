@@ -1,4 +1,7 @@
 defmodule Last10kWeb.FilingsLive do
+  @moduledoc """
+  A module that implements functions for handling a liveview of SEC Filings data
+  """
   @filings_timezone "America/New_York"
   @filings_refresh_rate 1000
   use Phoenix.LiveView

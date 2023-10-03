@@ -26,6 +26,7 @@
       <div class="sm:flex sm:flex-col sm:items-end text-end">
         <p class="text-sm leading-6 text-gray-900"><%= display_date(filing.acceptanceDate) %></p>
         <p class="mt-1 text-xs leading-5 text-gray-500"><%= display_time(filing.acceptanceDate) %> EST</p>
+        <p class="mt-1 text-xs leading-5 text-gray-500"><%= filing.age %></p>
       </div>
     </li>
   </ul>

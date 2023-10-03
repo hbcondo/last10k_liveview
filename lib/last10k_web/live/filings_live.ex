@@ -95,7 +95,8 @@ defmodule Last10kWeb.FilingsLive do
       url_html: uri,
       url_text: String.replace(link, "-index.htm", ".txt"),
       filingDate: get_filed(summary),
-      items: get_items(summary, category)
+      items: get_items(summary, category),
+      age: display_age(updated)
     }
   end
 
@@ -130,6 +131,10 @@ defmodule Last10kWeb.FilingsLive do
 
   defp display_time(value) do
     Enum.join [value.hour, value.minute, value.second], ":"
+  end
+
+  defp display_age(value) do
+    Timex.from_now(Timex.to_datetime(value, @filings_timezone), Timex.now(@filings_timezone))
   end
 
 end

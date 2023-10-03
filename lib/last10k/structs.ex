@@ -24,6 +24,7 @@ defmodule Last10k.Filing do
     :acceptanceDate,
     :url_html,
     :url_text,
+    :age,
     items: []
   ]
 end

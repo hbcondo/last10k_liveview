@@ -8,11 +8,12 @@
   </h3>
 </section>
 <center>
-  <ul id="latest-filings" phx-update="stream" role="list" class="w-8/9 m-3 divide-y divide-gray-100">
+  <ul id="latest-filings" phx-update="prepend" role="list" class="w-8/9 m-3 divide-y divide-gray-100">
     <li 
-      :for={filing <- @filings}
-      id={filing.id}
-      class="new-item flex justify-between gap-x-6 py-5">
+      :for={{id, filing} <- @streams.filings}
+      id={id}
+      class="flex justify-between gap-x-6 py-5" 
+      phx-mounted={JS.transition("animate-bounce", time: 500)}>
       <div class="flex min-w-0 gap-x-4 text-start">
         <div class="min-w-0 flex-auto">
           <p class="text-sm font-semibold leading-6 text-gray-900"><%= filing.company %></p>

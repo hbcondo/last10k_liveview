@@ -130,7 +130,8 @@ defmodule Last10kWeb.FilingsLive do
   end
 
   defp display_time(value) do
-    Enum.join [value.hour, value.minute, value.second], ":"
+    # https://hexdocs.pm/timex/Timex.Format.DateTime.Formatters.Strftime.html
+    Timex.format!(value, "%l:%M:%S %p", :strftime)
   end
 
   defp display_age(value) do

@@ -12,7 +12,8 @@
     <li 
       :for={{id, filing} <- @streams.filings}
       id={id}
-      class="flex justify-between py-5" 
+      class="flex justify-between py-5 hover:bg-gray-50 cursor-pointer"
+      onclick={"window.open('#{filing.url_html}')"}
       phx-mounted={JS.transition("animate-bounce", time: 500)}>
       <div class="flex min-w-0 gap-x-4 text-start">
         <div class="min-w-0 flex-auto">

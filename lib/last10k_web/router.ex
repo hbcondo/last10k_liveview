@@ -18,8 +18,8 @@ defmodule Last10kWeb.Router do
   scope "/", Last10kWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-    live "/filings", FilingsLive
+    #get "/", PageController, :home
+    live "/", FilingsLive
   end
 
   # Other scopes may use custom stacks.

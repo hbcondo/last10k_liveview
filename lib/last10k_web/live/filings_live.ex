@@ -14,6 +14,7 @@ defmodule Last10kWeb.FilingsLive do
   def mount(_params, _session, socket) do
     if connected?(socket), do: Process.send_after(self(), :update, @filings_refresh_rate)
 
+    socket = socket |> assign(page_title: "Stock Screener for SEC Filings in Real Time")
     mount_filings = get_filings().filings
 
     {:ok, stream(socket, :filings, mount_filings)}

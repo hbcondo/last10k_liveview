@@ -12,23 +12,23 @@
     <li 
       :for={{id, filing} <- @streams.filings}
       id={id}
-      class="flex justify-between gap-x-6 py-5" 
+      class="flex justify-between py-5" 
       phx-mounted={JS.transition("animate-bounce", time: 500)}>
       <div class="flex min-w-0 gap-x-4 text-start">
         <div class="min-w-0 flex-auto">
-          <p class="text-sm font-semibold leading-6 text-gray-900"><%= filing.company %></p>
+          <p class="text-sm truncate font-semibold leading-6 text-gray-900"><%= filing.company %></p>
           <p class="mt-1 text-xs leading-5">
             <%= filing.cik %> &#10687; <%= filing.accessionNumber %></p>
           <p class="mt-1 text-xs leading-5">Form <%= filing.formType %> <%= filing.reportingType %></p>
           <p
             :for={item <- filing.items} 
-            class="mt-1 truncate text-xs leading-5 text-gray-500"><%= item %></p>        
+            class="mt-1 truncate text-xs text-gray-500"><%= item %></p>        
         </div>
       </div>
       <div class="sm:flex sm:flex-col sm:items-end text-end">
-        <p class="text-sm leading-6 text-gray-900"><%= display_date(filing.acceptanceDate) %></p>
-        <p class="mt-1 text-xs leading-5 text-gray-500"><%= display_time(filing.acceptanceDate) %> EST</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500"><%= filing.age %></p>
+        <p class="text-sm leading-6 whitespace-nowrap text-gray-900"><%= filing.age %></p>
+        <p class="mt-1 text-xs leading-5 whitespace-nowrap text-gray-500"><%= display_time(filing.acceptanceDate) %> EST</p>
+        <p class="mt-1 text-xs leading-5 text-gray-500"><%= display_date(filing.acceptanceDate) %></p>
       </div>
     </li>
   </ul>

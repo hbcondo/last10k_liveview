@@ -6,6 +6,7 @@ defmodule Last10kWeb.FilingsLive do
   @filings_refresh_rate 1000
   use Phoenix.LiveView
 
+  alias Timex.Duration
   alias Phoenix.LiveView.JS
   alias Last10k.Filing
   alias Last10k.LatestFilings
@@ -136,7 +137,21 @@ defmodule Last10kWeb.FilingsLive do
   end
 
   defp display_age(value) do
-    Timex.from_now(Timex.to_datetime(value, @filings_timezone), Timex.now(@filings_timezone))
+    nowDateTime = Timex.now(@filings_timezone)
+    filingDateTime = Timex.to_datetime(value, @filings_timezone)
+    diff = Timex.diff(filingDateTime, nowDateTime, :days)
+
+    if diff == 0 do
+      Timex.from_now(filingDateTime, nowDateTime)
+    else
+      # remove time to display human number of days passed
+      Timex.from_now(Timex.to_date(filingDateTime), Timex.to_date(nowDateTime))
+    end
+
+    #debug: precise diff
+    #diff = Timex.diff(filingDateTimeEST, nowDateTimeEST, :seconds)
+    #dur = Timex.Duration.from_seconds(diff)
+    #Timex.format_duration(dur, :humanized)
   end
 
 end

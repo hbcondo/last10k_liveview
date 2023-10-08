@@ -139,19 +139,14 @@ defmodule Last10kWeb.FilingsLive do
   defp display_age(value) do
     nowDateTime = Timex.now(@filings_timezone)
     filingDateTime = Timex.to_datetime(value, @filings_timezone)
-    diff = Timex.diff(filingDateTime, nowDateTime, :days)
+    diff = Timex.diff(nowDateTime, filingDateTime, :hours)
 
-    if diff == 0 do
+    if diff < 12 do
       Timex.from_now(filingDateTime, nowDateTime)
     else
       # remove time to display human number of days passed
       Timex.from_now(Timex.to_date(filingDateTime), Timex.to_date(nowDateTime))
     end
-
-    #debug: precise diff
-    #diff = Timex.diff(filingDateTimeEST, nowDateTimeEST, :seconds)
-    #dur = Timex.Duration.from_seconds(diff)
-    #Timex.format_duration(dur, :humanized)
   end
 
 end

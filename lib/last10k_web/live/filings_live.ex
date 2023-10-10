@@ -127,7 +127,7 @@ defmodule Last10kWeb.FilingsLive do
   end
 
   defp display_date(value) do
-    Enum.join [value.year, value.month, value.day], "-"
+    Calendar.strftime(value, "%A %b %d")
   end
 
   defp display_time(value) do

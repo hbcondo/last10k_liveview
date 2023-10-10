@@ -1,7 +1,7 @@
 
 <section>
   <div class="container max-w-5xl mx-auto">
-    <div class="grid sm:grid-cols-12">
+    <div class="grid grid-cols-1 sm:grid-cols-12">
       <div class="col-span-12 sm:col-span-3 p-4 bg-gray-100 text-gray-800">
         <div class="sm:text-left">
           <div class="flex gap-4 mb-4">
@@ -58,7 +58,7 @@
                 <p class="mt-1 text-xs leading-5 font-semibold text-blue-700">Form <%= filing.formType %> <span class="font-normal text-black"><%= filing.reportingType %></span></p>
                 <p
                   :for={item <- filing.items} 
-                  class="mt-1 text-xs text-gray-500"><%= item %></p>        
+                  class="mt-1 truncate text-xs text-gray-500"><%= item %></p>        
               </div>
             </div>
             <div class="sm:flex sm:flex-col sm:items-end text-end">

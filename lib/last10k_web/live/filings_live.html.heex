@@ -1,71 +1,75 @@
-<header class="bg-gray-100 text-gray-800">
-	<div class="container flex flex-col mx-auto lg:flex-row">
-		<div class="w-full lg:w-1/3 bg-contain bg-center" style="background-image: url('https://last10k.com/last10k-social-sec-filings.jpg');"></div>
-		<div class="flex flex-col w-full p-6 lg:w-2/3 md:p-8 lg:p-12">
-      <div class="flex justify-start gap-4">
-        <a href="https://last10k.com" rel="noopener" target="_blank" title="Powered by Last10K.com">
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">  <image id="image0" width="50" height="50" x="0" y="0"
-            href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
-              AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAe1BMVEVMaXH/////////////
-              ///////////////////////////+/v/////////////////////////////T7fw9he6kxffG3foA
-              VeYBX+gAWOdnn/Hx9/4bb+p8rPNTvfQBiu2X1/hFq/Ixo/Bxw/VVlO8ATOW46PoBrO8xvfKHwKeJ
-              AAAAEnRSTlMAAyBKZXsSVqXN9P7hLJM1tj43UlTyAAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEQAA
-              CxEBf2RfkQAAAAd0SU1FB+cKBhcwHpRueIIAAAKoSURBVEjHjZaJeqowEEYTFlkGEQdBUFtarcv7
-              P+GdLMQkhN7ms1RDTmb7mcCYMzgXlyhOUhpJHPF5bm2Im5ssL0rUA6o82fwG0Y1tXcmleojvZb6T
-              t8JAlKvldBEf0D+w2QYhmkpLsQadAWomDTCcbRoJeIgyhVhEPsPZtrIsgPQILArLvctwti/t/SUC
-              9h70LbYZznYlgsvMu1szFsNZVLkxALaHToUGxi6WW8tO4UUN2B+Phx7RDgiw4sZIiovU9sMwjqez
-              4xlgrcxQsvzEKmQYjpfeZshJlTbOGoSlY4NkOs9MobO1KLlBxs5Pi8gaZzmuOeZakRlshJmoRPwr
-              Qn+kUJY4JQT9CSICIoGK4N0QZWr64wpCCdhUTvSA57MkP4ZxidCPMqJ8eY59Tl9yqj8oBDzxxSxz
-              jQB+T9O1leYuGrEkDSKYNIBM042kQoiuC6Alz5rVfuYlMn0jKgQ/TvCWNF3zNeRqkJ/7xZK0KOb/
-              kdGW9N8QqtBxaI2V3HtWwsg4/pwNUhu96KYSQo6Xbi6eTPLe1hwEkMNdRPIOP2Obcm4n54fc5eYh
-              Xef0GthKWSrk8XzJqj+uNgJ2o6F/hejEYJDn8yYcgE+BAJ7G+yyYt/c1iX87OymQ5+shmphCSJm9
-              J0vRMNjsmUaeT4qolwhoefmPCz37sVRDCFkIHzBRnaxQp4hB4HzTVrzDY+6X0oy41RqE7PTLTqWK
-              oplcJb791AiAH4R2qzFdXD3/tOjxUlbcw8UwpTnKuGwAatHXq10amAXlHDCZVeMVwmRrZhLU3gRO
-              WL1P6h+WmWFCCE0lyyN5X4XyOreXMg4e/DkGiyHmmmjl9SIuVJzv3qCAKvvlLSYr9MbWe0+R8DVC
-              ze/qwjpwoKj3bB2YIRbFaZ03TV6nccSWwD+miItLFXIAtgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAy
-              My0xMC0wNlQyMzo0ODozMCswMDowMHI3BeYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMTAtMDZU
-              MjM6NDg6MzArMDA6MDADar1aAAAAAElFTkSuQmCC" />
-            <title>Powered by Last10K.com</title>
-          </svg>
-        </a>
-        <a href="https://github.com/hbcondo/last10k_liveview" rel="noopener" target="_blank" title="Open Source">
-          <svg height="50" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="50" data-view-component="true" class="octicon octicon-mark-github v-align-middle color-fg-default">
-              <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-          </svg>
-        </a>
-      </div>
-			<h1 class="text-3xl font-semibold mt-4">Filings Received and Processed at the SEC</h1>
-			<p class="text-lg mt-4 mb-4">This is a <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">real-time stream</span> that is automatically updated when new SEC Filings for the current official filing date are made.</p>
-      <p class="text-base">Filings may be made <b>Monday to Friday 6AM to 10PM EST</b> (except for <a rel="noopener" target="_blank" class="text-blue-500 underline" href="https://www.sec.gov/info/edgar/fedholiday.htm">U.S. Federal Holidays</a>).</p>
-    </div>
-	</div>
-</header>
+
 <section>
-  <ul id="latest-filings" phx-update="prepend" role="list" class="w-8/9 m-3 divide-y divide-gray-100">
-    <li 
-      :for={{id, filing} <- @streams.filings}
-      id={id}
-      class="flex justify-between py-5 hover:bg-gray-50 cursor-pointer"
-      onclick={"window.open('#{filing.url_html}')"}
-      phx-mounted={JS.transition("animate-bounce", time: 500)}>
-      <div class="flex min-w-0 gap-x-4 text-start">
-        <div class="min-w-0 flex-auto">
-          <p class="text-sm truncate font-semibold leading-6 text-gray-900"><%= filing.company %></p>
-          <p class="mt-1 text-xs leading-5">
-            <%= filing.cik %> &#10687; <%= filing.accessionNumber %></p>
-          <p class="mt-1 text-xs leading-5 font-semibold text-blue-700">Form <%= filing.formType %> <span class="font-normal text-black"><%= filing.reportingType %></span></p>
-          <p
-            :for={item <- filing.items} 
-            class="mt-1 truncate text-xs text-gray-500"><%= item %></p>        
+  <div class="container max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-12">
+      <div class="col-span-12 sm:col-span-3 p-4 bg-gray-100 text-gray-800">
+        <div class="sm:text-left">
+          <div class="flex gap-4 mb-4">
+            <a href="https://last10k.com" rel="noopener" target="_blank" title="Powered by Last10K.com">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">  <image id="image0" width="50" height="50" x="0" y="0"
+                href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+                  AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAe1BMVEVMaXH/////////////
+                  ///////////////////////////+/v/////////////////////////////T7fw9he6kxffG3foA
+                  VeYBX+gAWOdnn/Hx9/4bb+p8rPNTvfQBiu2X1/hFq/Ixo/Bxw/VVlO8ATOW46PoBrO8xvfKHwKeJ
+                  AAAAEnRSTlMAAyBKZXsSVqXN9P7hLJM1tj43UlTyAAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEQAA
+                  CxEBf2RfkQAAAAd0SU1FB+cKBhcwHpRueIIAAAKoSURBVEjHjZaJeqowEEYTFlkGEQdBUFtarcv7
+                  P+GdLMQkhN7ms1RDTmb7mcCYMzgXlyhOUhpJHPF5bm2Im5ssL0rUA6o82fwG0Y1tXcmleojvZb6T
+                  t8JAlKvldBEf0D+w2QYhmkpLsQadAWomDTCcbRoJeIgyhVhEPsPZtrIsgPQILArLvctwti/t/SUC
+                  9h70LbYZznYlgsvMu1szFsNZVLkxALaHToUGxi6WW8tO4UUN2B+Phx7RDgiw4sZIiovU9sMwjqez
+                  4xlgrcxQsvzEKmQYjpfeZshJlTbOGoSlY4NkOs9MobO1KLlBxs5Pi8gaZzmuOeZakRlshJmoRPwr
+                  Qn+kUJY4JQT9CSICIoGK4N0QZWr64wpCCdhUTvSA57MkP4ZxidCPMqJ8eY59Tl9yqj8oBDzxxSxz
+                  jQB+T9O1leYuGrEkDSKYNIBM042kQoiuC6Alz5rVfuYlMn0jKgQ/TvCWNF3zNeRqkJ/7xZK0KOb/
+                  kdGW9N8QqtBxaI2V3HtWwsg4/pwNUhu96KYSQo6Xbi6eTPLe1hwEkMNdRPIOP2Obcm4n54fc5eYh
+                  Xef0GthKWSrk8XzJqj+uNgJ2o6F/hejEYJDn8yYcgE+BAJ7G+yyYt/c1iX87OymQ5+shmphCSJm9
+                  J0vRMNjsmUaeT4qolwhoefmPCz37sVRDCFkIHzBRnaxQp4hB4HzTVrzDY+6X0oy41RqE7PTLTqWK
+                  oplcJb791AiAH4R2qzFdXD3/tOjxUlbcw8UwpTnKuGwAatHXq10amAXlHDCZVeMVwmRrZhLU3gRO
+                  WL1P6h+WmWFCCE0lyyN5X4XyOreXMg4e/DkGiyHmmmjl9SIuVJzv3qCAKvvlLSYr9MbWe0+R8DVC
+                  ze/qwjpwoKj3bB2YIRbFaZ03TV6nccSWwD+miItLFXIAtgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAy
+                  My0xMC0wNlQyMzo0ODozMCswMDowMHI3BeYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMTAtMDZU
+                  MjM6NDg6MzArMDA6MDADar1aAAAAAElFTkSuQmCC" />
+                <title>Powered by Last10K.com</title>
+              </svg>
+            </a>        
+            <a href="https://github.com/hbcondo/last10k_liveview" rel="noopener" target="_blank" title="Open Source">
+              <svg height="50" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="50" data-view-component="true" class="octicon octicon-mark-github v-align-middle color-fg-default">
+                  <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+              </svg>
+            </a>
+          </div>
+          <h1 class="text-3xl font-semibold">Filings Received and Processed at the SEC</h1>
+          <p class="text-base mt-4 mb-4">This is a <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">real-time stream</span> that is automatically updated when newly accepted SEC Filings for the current official filing date are made.</p>
+          <p class="text-base">Filings may be made <b>Monday to Friday 6AM to 10PM EST</b> (except for <a rel="noopener" target="_blank" class="text-blue-500 underline" href="https://www.sec.gov/info/edgar/fedholiday.htm">U.S. Federal Holidays</a>).</p>
         </div>
       </div>
-      <div class="sm:flex sm:flex-col sm:items-end text-end">
-        <p class="text-sm leading-6 whitespace-nowrap text-gray-900"><span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"><%= filing.age %></span></p>
-        <p class="mt-1 text-xs leading-5 whitespace-nowrap text-gray-500"><%= display_time(filing.acceptanceDate) %> EST</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500"><%= display_date(filing.acceptanceDate) %></p>
+      <div class="relative col-span-12 px-4 pt-0 sm:col-span-9">
+        <ul id="latest-filings" phx-update="prepend" role="list" class="w-full divide-y divide-gray-100">
+          <li 
+            :for={{id, filing} <- @streams.filings}
+            id={id}
+            class="flex justify-between py-5 hover:bg-gray-50 cursor-pointer"
+            onclick={"window.open('#{filing.url_html}')"}
+            phx-mounted={JS.transition("animate-bounce", time: 500)}>
+            <div class="flex min-w-0 gap-x-4 text-start">
+              <div class="min-w-0 flex-auto">
+                <p class="text-sm truncate font-semibold leading-6 text-gray-900"><%= filing.company %></p>
+                <p class="mt-1 text-xs leading-5">
+                  <%= filing.cik %> &#10687; <%= filing.accessionNumber %></p>
+                <p class="mt-1 text-xs leading-5 font-semibold text-blue-700">Form <%= filing.formType %> <span class="font-normal text-black"><%= filing.reportingType %></span></p>
+                <p
+                  :for={item <- filing.items} 
+                  class="mt-1 truncate text-xs text-gray-500"><%= item %></p>        
+              </div>
+            </div>
+            <div class="sm:flex sm:flex-col sm:items-end text-end">
+              <p class="text-sm leading-6 whitespace-nowrap text-gray-900"><span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"><%= filing.age %></span></p>
+              <p class="mt-1 text-xs leading-5 whitespace-nowrap text-gray-500"><%= display_time(filing.acceptanceDate) %> EST</p>
+              <p class="mt-1 text-xs leading-5 text-gray-500"><%= display_date(filing.acceptanceDate) %></p>
+            </div>
+          </li>
+        </ul>
       </div>
-    </li>
-  </ul>
+    </div>
+  </div>
 </section>
 <footer class="text-center bg-gray-100 text-gray-800 text-sm italic">
     Not affiliated with <a class="underline text-blue-500" rel="noopener" target="_blank" title="U.S. Securities and Exchange Commission" href="https://sec.gov">SEC.gov</a> Under no circumstances does this report represent an endorsement to buy / sell these stocks.

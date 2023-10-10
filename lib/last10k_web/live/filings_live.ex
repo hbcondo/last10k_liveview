@@ -6,7 +6,6 @@ defmodule Last10kWeb.FilingsLive do
   @filings_refresh_rate 1000
   use Phoenix.LiveView
 
-  alias Timex.Duration
   alias Phoenix.LiveView.JS
   alias Last10k.Filing
   alias Last10k.LatestFilings

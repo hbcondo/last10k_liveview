@@ -28,6 +28,7 @@ This is a real-time streaming web application that automatically updates its dis
 
 ## ⛏️ Built Using
 - [```Phoenix LiveView```](https://github.com/phoenixframework/phoenix_live_view)
+- [```Rust```](https://www.rust-lang.org)
 
 ## 🏁 Getting Started
 To start a Phoenix server on your local machine for development and testing purposes:

@@ -32,6 +32,7 @@ This is a real-time streaming web application that automatically updates its dis
 ## ⛏️ Built Using
 - [```Phoenix LiveView```](https://github.com/phoenixframework/phoenix_live_view)
 - [```Rust```](https://www.rust-lang.org)
+- [```Tailwind CSS```](https://tailwindcss.com)
 
 ## 🏁 Getting Started
 To start a Phoenix server on your local machine for development and testing purposes:
@@ -61,3 +62,4 @@ The Last10K LiveView source code is made available under the [**Apache 2.0 licen
 
 ## 🎉 Acknowledgements
 - [Parsing Atom feeds](https://github.com/avencera/fast_rss/issues/20)
+- [Mambda UI](https://mambaui.com)

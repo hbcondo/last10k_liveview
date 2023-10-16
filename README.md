@@ -16,13 +16,13 @@
 ---
 > By Amar Kota - [Hire me](https://amarkota.com/resume)
 
+[<img alt="Screenshot Last10K - LIVE" src="https://github.com/hbcondo/last10k_liveview/assets/306958/13633443-b906-4796-8c1b-641a4bde5361" alt="Last10K - Streaming SEC Filings" />](https://github.com/hbcondo/last10k_liveview/assets/306958/13633443-b906-4796-8c1b-641a4bde5361)
+
 ## 🧐 About
 This is a real-time streaming web application that automatically updates its display when newly accepted [SEC Filings](https://en.wikipedia.org/wiki/SEC_filing) for the current official filing date are made. 
 
 > [!IMPORTANT]
 > Filings may be made **Monday to Friday 6AM to 10PM EST** (except for [U.S. Federal Holidays](https://www.sec.gov/info/edgar/fedholiday.htm)).
-
-[<img alt="Screenshot Last10K - LIVE" src="https://github.com/hbcondo/last10k_liveview/assets/306958/25138835-c501-4759-9008-4a73861ff120" width="35%" alt="Last10K - Streaming SEC Filings" />](https://github.com/hbcondo/last10k_liveview/assets/306958/25138835-c501-4759-9008-4a73861ff120)
 
 ## ✨ Features
 - Covers every SEC form type including ownership / insider filings
@@ -31,8 +31,8 @@ This is a real-time streaming web application that automatically updates its dis
 
 ## ⛏️ Built Using
 - [```Phoenix LiveView```](https://github.com/phoenixframework/phoenix_live_view)
-- [```Rust```](https://www.rust-lang.org)
 - [```Tailwind CSS```](https://tailwindcss.com)
+- [```Rust```](https://www.rust-lang.org)
 
 ## 🏁 Getting Started
 To start a Phoenix server on your local machine for development and testing purposes:
